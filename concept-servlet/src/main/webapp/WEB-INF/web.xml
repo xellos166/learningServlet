@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.1" metadata-complete="false"
-	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<web-app>
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
@@ -12,19 +9,30 @@
 
 	<servlet>
 		<servlet-name>OldServeltDemoController</servlet-name>
-		<servlet-class>com.aredent.servlet.controller.OldServeltDemoController</servlet-class>
+		<servlet-class>com.aredent.servlet.controller.OldServeltDemoController
+		</servlet-class>
 		<load-on-startup>0</load-on-startup>
+
+		<init-param>
+			<param-name>name</param-name>
+			<param-value>Sam</param-value>
+		</init-param>
+		<init-param>
+			<param-name>course</param-name>
+			<param-value>Java Servlet</param-value>
+		</init-param>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>OldServeltDemoController</servlet-name>
 		<url-pattern>/welcome</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 	<servlet>
 		<servlet-name>WelcomeController</servlet-name>
-		<servlet-class>com.aredent.servlet.controller.WelcomeController</servlet-class>
+		<servlet-class>com.aredent.servlet.controller.WelcomeController
+		</servlet-class>
 		<load-on-startup>0</load-on-startup>
 	</servlet>
 
@@ -33,4 +41,9 @@
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
 
+	<!-- Contex param example -->
+	<context-param>
+		<param-name>appName</param-name>
+		<param-value>concept-servlet</param-value>
+	</context-param>
 </web-app>

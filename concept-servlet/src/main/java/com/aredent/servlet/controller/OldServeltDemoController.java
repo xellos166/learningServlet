@@ -2,8 +2,11 @@ package com.aredent.servlet.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -54,8 +57,21 @@ public class OldServeltDemoController extends HttpServlet {
 		response.setContentType("text/html");
 
 		PrintWriter pw = response.getWriter();
-
+		ServletConfig config = getServletConfig();
+		Enumeration<String> e = config.getInitParameterNames();
+		// pw.println("Name :" + config.getInitParameter("name") + "<br> Course:" +
+		// config.getInitParameter("course"));
+		String str = "";
+		while (e.hasMoreElements()) {
+			str = e.nextElement();
+			pw.print("<br>Name: " + str);
+			pw.print(" value: " + config.getInitParameter(str));
+		}
 		pw.print("Welcome :" + request.getParameter("name"));
+
+		// Servlet context demo
+		ServletContext context = getServletContext();
+		pw.println("<br>App Name :" + context.getInitParameter("appName"));
 
 		pw.close();
 	}
